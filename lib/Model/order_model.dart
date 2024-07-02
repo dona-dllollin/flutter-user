@@ -25,16 +25,17 @@ class OrderItem {
 
 class OrderModel {
   final String namaPemesan;
-  // final String noMeja;
+  final String noMeja;
   List<OrderItem> items;
 
-  OrderModel({required this.namaPemesan, required this.items});
+  OrderModel(
+      {required this.namaPemesan, required this.noMeja, required this.items});
 
   // Konversi instance OrderModel menjadi format JSON
   Map<String, dynamic> toJson() {
     return {
       'namaPemesan': namaPemesan,
-      // 'noMeja': noMeja,
+      'noMeja': noMeja,
       'items': items.map((item) => item.toJson()).toList(),
     };
   }
@@ -49,7 +50,7 @@ class OrderModel {
         itemsJson.map((itemJson) => OrderItem.fromJson(itemJson)).toList();
     return OrderModel(
         namaPemesan: json['namaPemesan'] as String? ?? '',
-        // noMeja: json['harga'] as String? ?? '',
+        noMeja: json['harga'] as String? ?? '',
         items: items);
   }
 }

@@ -14,6 +14,7 @@ class CheckOutBox extends StatefulWidget {
 
 class _CheckOutBoxState extends State<CheckOutBox> {
   final _namaPemesanController = TextEditingController();
+  final _noMejaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +72,10 @@ class _CheckOutBoxState extends State<CheckOutBox> {
                             decoration:
                                 InputDecoration(labelText: 'Nama Pemesan'),
                           ),
-                          // TextField(
-                          //   controller: _noMejaController,
-                          //   decoration: InputDecoration(labelText: 'No Meja'),
-                          // ),
+                          TextField(
+                            controller: _noMejaController,
+                            decoration: InputDecoration(labelText: 'No Meja'),
+                          ),
                         ],
                       ),
                       actions: [
@@ -94,7 +95,7 @@ class _CheckOutBoxState extends State<CheckOutBox> {
                         TextButton(
                           onPressed: () async {
                             final namaPemesan = _namaPemesanController.text;
-                            // final noMeja = _noMejaController.text;
+                            final noMeja = _noMejaController.text;
 
                             if (namaPemesan.isNotEmpty) {
                               final orderItems = Provider.of<OrderItemProvider>(
@@ -103,7 +104,7 @@ class _CheckOutBoxState extends State<CheckOutBox> {
                                   .orderItems;
                               final orderModel = OrderModel(
                                 namaPemesan: namaPemesan,
-                                // noMeja: noMeja,
+                                noMeja: noMeja,
                                 items: orderItems,
                               );
 
